@@ -9,6 +9,12 @@ export default async function loginEndpoint(req: NextApiRequest, res: NextApiRes
   const { password } = req.body;
   const adminPassword = process.env.ADMIN_PASSWORD;
 
+  console.log('Login attempt:', {
+    receivedPassword: password,
+    expectedPassword: adminPassword,
+    match: password === adminPassword,
+  });
+
   if (!adminPassword) {
     res.status(500).json({ error: 'Admin password not configured' });
     return;

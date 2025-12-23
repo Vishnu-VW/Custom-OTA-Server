@@ -11,6 +11,7 @@ export default function Home() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(password, "password");
     try {
       const response = await fetch('/api/login', {
         method: 'POST',

@@ -22,7 +22,7 @@ export class SupabaseDatabase implements DatabaseInterface {
       .from(Tables.RELEASES)
       .select()
       .eq('runtime_version', runtimeVersion)
-      .order('timestamp', { ascending: false })
+      .order('created_at', { ascending: false })
       .limit(1)
       .single();
 
@@ -33,7 +33,7 @@ export class SupabaseDatabase implements DatabaseInterface {
         id: data.id,
         runtimeVersion: data.runtime_version,
         path: data.path,
-        timestamp: data.timestamp,
+        timestamp: data.created_at,
         commitHash: data.commit_hash,
         commitMessage: data.commit_message,
         updateId: data.update_id,
@@ -125,7 +125,7 @@ export class SupabaseDatabase implements DatabaseInterface {
       .insert({
         path: release.path,
         runtime_version: release.runtimeVersion,
-        timestamp: release.timestamp,
+        created_at: release.timestamp,
         commit_hash: release.commitHash,
         commit_message: release.commitMessage,
         update_id: release.updateId,
@@ -150,7 +150,7 @@ export class SupabaseDatabase implements DatabaseInterface {
       id: data.id,
       path: data.path,
       runtimeVersion: data.runtime_version,
-      timestamp: data.timestamp,
+      timestamp: data.created_at,
       commitHash: data.commit_hash,
       commitMessage: data.commit_message,
     };
@@ -160,14 +160,14 @@ export class SupabaseDatabase implements DatabaseInterface {
     const { data, error } = await this.supabase
       .from(Tables.RELEASES)
       .select()
-      .order('timestamp', { ascending: false });
+      .order('created_at', { ascending: false });
 
     if (error) throw error;
     return data.map((release) => ({
       id: release.id,
       path: release.path,
       runtimeVersion: release.runtime_version,
-      timestamp: release.timestamp,
+      timestamp: release.created_at,
       size: release.size,
       commitHash: release.commit_hash,
       commitMessage: release.commit_message,
