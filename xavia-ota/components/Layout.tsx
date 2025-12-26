@@ -27,7 +27,6 @@ import {
   FaSun,
   FaExclamationTriangle,
 } from 'react-icons/fa';
-import Image from 'next/image';
 import { useRef } from 'react';
 
 export default function Layout({ children, ...props }: { children: React.ReactNode } & FlexProps) {

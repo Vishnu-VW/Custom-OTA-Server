@@ -11,7 +11,6 @@ import {
   VStack,
   useColorModeValue,
   Stat,
-  StatLabel,
   StatNumber,
   StatHelpText,
   Flex,

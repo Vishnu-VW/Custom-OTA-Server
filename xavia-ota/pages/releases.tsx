@@ -9,7 +9,6 @@ import {
   Text,
   Heading,
   Button,
-  Tag,
   HStack,
   IconButton,
   AlertDialogHeader,
@@ -24,7 +23,6 @@ import {
   useColorModeValue,
   Badge,
   Card,
-  CardBody,
   Spinner,
 } from '@chakra-ui/react';
 import moment from 'moment';
@@ -329,7 +327,7 @@ export default function ReleasesPage() {
                       showToast('Rollback successful', 'success');
                       fetchReleases();
                       setIsOpen(false);
-                    } catch (err) {
+                    } catch {
                       showToast('Rollback failed', 'error');
                     }
                   }}
